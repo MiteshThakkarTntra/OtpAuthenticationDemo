@@ -1,0 +1,464 @@
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE DATABASE "OtpAuthentication_development" ENCODING = 'unicode'[0m
+  [1m[35m (26.9ms)[0m  [1m[35mCREATE DATABASE "OtpAuthentication_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2224934062630075335)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20211112043813)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "country_code" character varying, "phone_number" integer, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211112043813"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-12 04:38:40.403227"], ["updated_at", "2021-11-12 04:38:40.403227"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2224934062630075335)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/send_otp_code" for ::1 at 2021-11-12 10:36:21 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "phone_number": "9099351959"
+    "country_code": "+91"
+}
+Processing by UsersController#send_code as */*
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.0ms | Allocations: 4511)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (809: unexpected token at '{
+    "phone_number": "9099351959"
+    "country_code": "+91"
+}'):
+  
+app/controllers/users_controller.rb:18:in `user_params'
+app/controllers/users_controller.rb:4:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 10:36:34 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 1244)
+
+
+Started POST "/send_otp_code" for ::1 at 2021-11-12 10:57:23 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 1ms (Views: 0.1ms | Allocations: 382)
+
+
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:01:29 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 1ms (Views: 0.3ms | Allocations: 369)
+
+
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:01:48 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 1ms (Views: 0.2ms | Allocations: 360)
+
+
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:13:38 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 110ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 155880)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:16:15 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2224934062630075335)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeDataTypeInPhoneNumber (20211112054655)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "users" ALTER COLUMN "phone_number" TYPE bigint[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211112054655"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2224934062630075335)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2021-11-12 11:17:46 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2021-11-12 11:17:59 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:18:22 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 114ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 155742)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:19:16 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2021-11-12 11:19:27 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/users" for ::1 at 2021-11-12 11:22:49 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9099351959, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9099351959, "name"=>"meet"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("country_code", "phone_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["created_at", "2021-11-12 05:52:50.192970"], ["updated_at", "2021-11-12 05:52:50.192970"]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 1069ms (ActiveRecord: 9.9ms | Allocations: 11880)
+
+
+  
+NameError (uninitialized constant UsersController::JsonWebToken):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:22:59 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 832)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:23:22 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9099351959, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9099351959, "name"=>"meet"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 1052ms (ActiveRecord: 0.7ms | Allocations: 4374)
+
+
+  
+NameError (uninitialized constant UsersController::JsonWebToken):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:27:36 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 103ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 155829)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:28:00 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9099351959, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9099351959, "name"=>"meet"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 1166ms (ActiveRecord: 6.0ms | Allocations: 10589)
+
+
+  
+NameError (uninitialized constant UsersController::JsonWebToken):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:31:14 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9033571730", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9033571730"}}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 495)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:31:46 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9033571730, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9033571730, "name"=>"meet"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9033571730], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("country_code", "phone_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["country_code", "+91"], ["phone_number", 9033571730], ["created_at", "2021-11-12 06:01:47.874079"], ["updated_at", "2021-11-12 06:01:47.874079"]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 1114ms (ActiveRecord: 3.2ms | Allocations: 6645)
+
+
+  
+NameError (uninitialized constant UsersController::JsonWebToken):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:41:09 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 102ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 155830)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:42:29 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9099351959, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9099351959, "name"=>"meet"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 1185ms (ActiveRecord: 6.1ms | Allocations: 10587)
+
+
+  
+NameError (uninitialized constant UsersController::JsonWebToken):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:46:32 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 958)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:46:59 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9099351959, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9099351959, "name"=>"meet"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 1246ms (ActiveRecord: 4.3ms | Allocations: 6820)
+
+
+  
+NameError (uninitialized constant UsersController::JsonWebToken):
+  
+app/controllers/users_controller.rb:8:in `create'
+Started POST "/send_otp_code" for ::1 at 2021-11-12 11:50:25 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 200 OK in 122ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 159125)
+
+
+Started POST "/users" for ::1 at 2021-11-12 11:50:58 +0530
+Processing by UsersController#create as */*
+  Parameters: {"phone_number"=>9099351959, "country_code"=>"+91", "name"=>"meet", "otp_code"=>"[FILTERED]", "user"=>{"country_code"=>"+91", "phone_number"=>9099351959, "name"=>"meet"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country_code" = $1 AND "users"."phone_number" = $2 LIMIT $3[0m  [["country_code", "+91"], ["phone_number", 9099351959], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+Completed 201 Created in 1191ms (Views: 1.1ms | ActiveRecord: 6.1ms | Allocations: 9566)
+
+
+Started POST "/send_otp_code" for ::1 at 2021-11-15 10:14:38 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 141ms (ActiveRecord: 1.1ms | Allocations: 147517)
+
+
+  
+NameError (uninitialized constant Constant::ACCOUNT_SID):
+  
+app/services/two_factor_authentication.rb:9:in `initialize'
+app/controllers/users_controller.rb:30:in `new'
+app/controllers/users_controller.rb:30:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 10:31:47 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 2ms (Allocations: 1762)
+
+
+  
+NameError (uninitialized constant Constant::ACCOUNT_SID):
+  
+app/services/two_factor_authentication.rb:9:in `initialize'
+app/controllers/users_controller.rb:30:in `new'
+app/controllers/users_controller.rb:30:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 11:18:16 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1277ms (ActiveRecord: 2.4ms | Allocations: 15627)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:03:23 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 3293ms (ActiveRecord: 2.4ms | Allocations: 2246)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authentication Error - invalid username
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:07:51 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1250ms (ActiveRecord: 1.9ms | Allocations: 2233)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authentication Error - invalid username
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:22:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:11:54 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1131ms (ActiveRecord: 1.0ms | Allocations: 2236)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authentication Error - invalid username
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:26:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:15:48 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "user"=>{"phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.9ms | Allocations: 1197)
+
+
+  
+NoMethodError (undefined method `send_otp' for #<TwoFactorAuthentication:0x000055e6e94351e0 @client=#<Twilio::REST::Client:0x000055e6e949c228 @username="https://api.authy.com", @password="SK6436d63485b355f66818f3288f8743e2", @region=nil, @edge=nil, @account_sid="https://api.authy.com", @auth_token="SK6436d63485b355f66818f3288f8743e2", @auth=["https://api.authy.com", "SK6436d63485b355f66818f3288f8743e2"], @http_client=#<Twilio::HTTP::Client:0x000055e6e9487c88 @proxy_prot=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http, @configure_connection_blocks=[]>, @logger=nil, @accounts=nil, @api=nil, @autopilot=nil, @chat=nil, @conversations=nil, @events=nil, @fax=nil, @flex_api=nil, @frontline_api=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @media=nil, @messaging=nil, @monitor=nil, @notify=nil, @numbers=nil, @preview=nil, @pricing=nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @trusthub=nil, @verify=#<Twilio::REST::Verify:0x000055e6e94876c0 @client=#<Twilio::REST::Client:0x000055e6e949c228 ...>, @host="verify.twilio.com", @base_url="https://verify.twilio.com", @port=443, @v2=#<Twilio::REST::Verify::V2:0x000055e6e9487580 @domain=#<Twilio::REST::Verify:0x000055e6e94876c0 ...>, @version="v2", @forms=nil, @services=nil, @verification_attempts=nil, @templates=nil>>, @video=nil, @voice=nil, @wireless=nil, @supersim=nil, @bulkexports=nil>, @verification_service=#<Twilio.Verify.V2.ServiceContext sid: VAd1e0d6c8de51ce262aa8f57fabfe3d47>, @phone_number_with_code="+919099351959", @otp=nil>):
+  
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:17:48 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "user"=>{"phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.9ms | Allocations: 1080)
+
+
+  
+NoMethodError (undefined method `send_otp' for #<TwoFactorAuthentication:0x00007f8169689c68 @client=#<Twilio::REST::Client:0x00007f8169688368 @username="https://api.authy.com", @password="SK6436d63485b355f66818f3288f8743e2", @region=nil, @edge=nil, @account_sid="https://api.authy.com", @auth_token="SK6436d63485b355f66818f3288f8743e2", @auth=["https://api.authy.com", "SK6436d63485b355f66818f3288f8743e2"], @http_client=#<Twilio::HTTP::Client:0x00007f81696880e8 @proxy_prot=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http, @configure_connection_blocks=[]>, @logger=nil, @accounts=nil, @api=nil, @autopilot=nil, @chat=nil, @conversations=nil, @events=nil, @fax=nil, @flex_api=nil, @frontline_api=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @media=nil, @messaging=nil, @monitor=nil, @notify=nil, @numbers=nil, @preview=nil, @pricing=nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @trusthub=nil, @verify=#<Twilio::REST::Verify:0x00007f816966fbd8 @client=#<Twilio::REST::Client:0x00007f8169688368 ...>, @host="verify.twilio.com", @base_url="https://verify.twilio.com", @port=443, @v2=#<Twilio::REST::Verify::V2:0x00007f816966f840 @domain=#<Twilio::REST::Verify:0x00007f816966fbd8 ...>, @version="v2", @forms=nil, @services=nil, @verification_attempts=nil, @templates=nil>>, @video=nil, @voice=nil, @wireless=nil, @supersim=nil, @bulkexports=nil>, @verification_service=#<Twilio.Verify.V2.ServiceContext sid: VAd1e0d6c8de51ce262aa8f57fabfe3d47>, @phone_number_with_code="+919099351959", @otp=nil>):
+  
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:18:50 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "user"=>{"phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 745)
+
+
+  
+NoMethodError (undefined method `send_otp' for #<TwoFactorAuthentication:0x00007f8169d1b040 @client=#<Twilio::REST::Client:0x00007f8169d1aff0 @username="https://api.authy.com", @password="SK6436d63485b355f66818f3288f8743e2", @region=nil, @edge=nil, @account_sid="https://api.authy.com", @auth_token="SK6436d63485b355f66818f3288f8743e2", @auth=["https://api.authy.com", "SK6436d63485b355f66818f3288f8743e2"], @http_client=#<Twilio::HTTP::Client:0x00007f8169d1af00 @proxy_prot=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http, @configure_connection_blocks=[]>, @logger=nil, @accounts=nil, @api=nil, @autopilot=nil, @chat=nil, @conversations=nil, @events=nil, @fax=nil, @flex_api=nil, @frontline_api=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @media=nil, @messaging=nil, @monitor=nil, @notify=nil, @numbers=nil, @preview=nil, @pricing=nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @trusthub=nil, @verify=#<Twilio::REST::Verify:0x00007f8169d1ae88 @client=#<Twilio::REST::Client:0x00007f8169d1aff0 ...>, @host="verify.twilio.com", @base_url="https://verify.twilio.com", @port=443, @v2=#<Twilio::REST::Verify::V2:0x00007f8169d1ae60 @domain=#<Twilio::REST::Verify:0x00007f8169d1ae88 ...>, @version="v2", @forms=nil, @services=nil, @verification_attempts=nil, @templates=nil>>, @video=nil, @voice=nil, @wireless=nil, @supersim=nil, @bulkexports=nil>, @verification_service=#<Twilio.Verify.V2.ServiceContext sid: VAd1e0d6c8de51ce262aa8f57fabfe3d47>, @phone_number_with_code="+919099351959", @otp=nil>):
+  
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:19:33 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 727)
+
+
+  
+NoMethodError (undefined method `send_otp' for #<TwoFactorAuthentication:0x00007f816c0e4210 @client=#<Twilio::REST::Client:0x00007f816c0e41e8 @username="https://api.authy.com", @password="SK6436d63485b355f66818f3288f8743e2", @region=nil, @edge=nil, @account_sid="https://api.authy.com", @auth_token="SK6436d63485b355f66818f3288f8743e2", @auth=["https://api.authy.com", "SK6436d63485b355f66818f3288f8743e2"], @http_client=#<Twilio::HTTP::Client:0x00007f816c0e4120 @proxy_prot=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http, @configure_connection_blocks=[]>, @logger=nil, @accounts=nil, @api=nil, @autopilot=nil, @chat=nil, @conversations=nil, @events=nil, @fax=nil, @flex_api=nil, @frontline_api=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @media=nil, @messaging=nil, @monitor=nil, @notify=nil, @numbers=nil, @preview=nil, @pricing=nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @trusthub=nil, @verify=#<Twilio::REST::Verify:0x00007f816c0e40a8 @client=#<Twilio::REST::Client:0x00007f816c0e41e8 ...>, @host="verify.twilio.com", @base_url="https://verify.twilio.com", @port=443, @v2=#<Twilio::REST::Verify::V2:0x00007f816c0e4080 @domain=#<Twilio::REST::Verify:0x00007f816c0e40a8 ...>, @version="v2", @forms=nil, @services=nil, @verification_attempts=nil, @templates=nil>>, @video=nil, @voice=nil, @wireless=nil, @supersim=nil, @bulkexports=nil>, @verification_service=#<Twilio.Verify.V2.ServiceContext sid: VAd1e0d6c8de51ce262aa8f57fabfe3d47>, @phone_number_with_code="+919099351959", @otp="+91">):
+  
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:20:10 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.0ms | Allocations: 2168)
+
+
+  
+NameError (uninitialized constant Constant::ACCOUNT_SID):
+  
+app/services/two_factor_authentication.rb:9:in `initialize'
+app/controllers/users_controller.rb:30:in `new'
+app/controllers/users_controller.rb:30:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:20:54 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 3777ms (ActiveRecord: 0.9ms | Allocations: 2222)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:21:58 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1244ms (ActiveRecord: 0.9ms | Allocations: 2135)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:26:13 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1179ms (ActiveRecord: 0.9ms | Allocations: 2212)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:56:26 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1140ms (ActiveRecord: 2.3ms | Allocations: 2223)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:58:52 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1026ms (ActiveRecord: 1.6ms | Allocations: 2220)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
+Started POST "/send_otp_code" for ::1 at 2021-11-15 15:59:46 +0530
+Processing by UsersController#send_code as */*
+  Parameters: {"phone_number"=>"9099351959", "country_code"=>"+91", "user"=>{"country_code"=>"+91", "phone_number"=>"9099351959"}}
+Completed 500 Internal Server Error in 1142ms (ActiveRecord: 0.8ms | Allocations: 2229)
+
+
+  
+Twilio::REST::RestError ([HTTP 401] 20003 : Unable to create record
+Authenticate
+https://www.twilio.com/docs/errors/20003
+
+):
+  
+app/services/two_factor_authentication.rb:16:in `send_otp'
+app/controllers/users_controller.rb:33:in `send_code'
